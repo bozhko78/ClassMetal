@@ -3,501 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLASS METAL LTD - Professional Reinforcement Steel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="color-scheme" content="light dark">
+    <title>CLASS METAL LTD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            color-scheme: light dark;
+        }
+        
         body { 
-            font-family: 'Inter', sans-serif; 
-            overflow-x: hidden; 
-            background: #0f0f15;
-            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
         }
         
-        h1, h2, h3, h4, h5, h6 { font-family: 'Raleway', sans-serif; font-weight: 700; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
         
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-25px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes glow { 0%, 100% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.3); } 50% { box-shadow: 0 0 45px rgba(16, 185, 129, 0.5); } }
-        @keyframes blob { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(30px, -50px) scale(1.1); } 66% { transform: translate(-20px, 20px) scale(0.9); } }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-25px); } }
-        @keyframes shimmer { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-
-        .animate-fade-in-up { animation: fadeInUp 0.9s ease-out forwards; }
-        .animate-slide-down { animation: slideDown 0.6s ease-out; }
-        .glow-text { animation: glow 3s ease-in-out infinite; }
-        .animate-blob { animation: blob 8s infinite; }
+        /* LIGHT MODE */
+        @media (prefers-color-scheme: light) {
+            body { background: #f8f8f8; color: #1a1a1a; }
+            .nav-bar { background: rgba(255, 255, 255, 0.8); border-color: rgba(168, 85, 247, 0.2); }
+            .hero-section { background: linear-gradient(135deg, #ffffff 0%, #f3e8ff 50%, #fce7f3 100%); }
+            .card { background: rgba(255, 255, 255, 0.9); border-color: rgba(168, 85, 247, 0.2); }
+            .card:hover { border-color: #a855f7; box-shadow: 0 20px 50px rgba(168, 85, 247, 0.15); }
+            .text-muted { color: #666; }
+            .accent-color { color: #a855f7; }
+            .accent-gradient { background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); }
+            .btn-primary { background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); color: white; }
+            .btn-primary:hover { box-shadow: 0 15px 40px rgba(168, 85, 247, 0.3); }
+            .section-alt { background: rgba(168, 85, 247, 0.05); }
+            input, textarea { background: rgba(255, 255, 255, 0.8); color: #1a1a1a; border-color: rgba(168, 85, 247, 0.2); }
+            input::placeholder, textarea::placeholder { color: #999; }
+        }
+        
+        /* DARK MODE */
+        @media (prefers-color-scheme: dark) {
+            body { background: #0f0f1a; color: #f5f5f5; }
+            .nav-bar { background: rgba(20, 20, 35, 0.8); border-color: rgba(34, 197, 94, 0.2); }
+            .hero-section { background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%); }
+            .card { background: rgba(25, 25, 40, 0.8); border-color: rgba(34, 197, 94, 0.2); }
+            .card:hover { border-color: #22c55e; box-shadow: 0 20px 50px rgba(34, 197, 94, 0.15); }
+            .text-muted { color: #aaa; }
+            .accent-color { color: #22c55e; }
+            .accent-gradient { background: linear-gradient(135deg, #22c55e 0%, #10b981 100%); }
+            .btn-primary { background: linear-gradient(135deg, #22c55e 0%, #10b981 100%); color: white; }
+            .btn-primary:hover { box-shadow: 0 15px 40px rgba(34, 197, 94, 0.3); }
+            .section-alt { background: rgba(34, 197, 94, 0.05); }
+            input, textarea { background: rgba(30, 30, 50, 0.8); color: #f5f5f5; border-color: rgba(34, 197, 94, 0.2); }
+            input::placeholder, textarea::placeholder { color: #666; }
+        }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes blob { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(20px, -30px) scale(1.05); } 66% { transform: translate(-15px, 15px) scale(0.95); } }
+        
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-slide-down { animation: slideDown 0.5s ease-out; }
         .animate-float { animation: float 4s ease-in-out infinite; }
-        .animate-shimmer { animation: shimmer 2s ease-in-out infinite; }
-
-        .hero-bg { 
-            position: relative; 
-            overflow: hidden; 
-            background: linear-gradient(135deg, #0f0f15 0%, #1a1a24 50%, #161620 100%);
+        .animate-blob { animation: blob 8s infinite; }
+        
+        .nav-bar { 
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid;
+            transition: all 0.3s;
         }
         
-        .hero-bg::before { 
-            content: ''; 
-            position: absolute; 
-            top: 15%; 
-            left: 5%; 
-            width: 500px; 
-            height: 500px; 
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%); 
-            border-radius: 50%; 
-            filter: blur(80px); 
-            animation: blob 10s infinite;
-        }
-        
-        .hero-bg::after { 
-            content: ''; 
-            position: absolute; 
-            bottom: 5%; 
-            right: 10%; 
-            width: 400px; 
-            height: 400px; 
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%); 
-            border-radius: 50%; 
-            filter: blur(80px); 
-            animation: blob 10s infinite 3s;
-        }
-
-        .glass-premium { 
-            background: rgba(26, 26, 36, 0.7); 
-            backdrop-filter: blur(15px); 
-            border: 1px solid rgba(16, 185, 129, 0.15);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .glass-premium:hover {
-            border-color: rgba(16, 185, 129, 0.3);
-            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.1);
-        }
-
-        .gradient-text { 
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            background-clip: text;
-        }
-        
-        .nav-link { 
-            position: relative; 
-            padding-bottom: 6px; 
-            cursor: pointer; 
-            transition: color 0.4s ease;
-            color: #e5e7eb;
-        }
-
-        .nav-link::after { 
-            content: ''; 
-            position: absolute; 
-            bottom: 0; 
-            left: 0; 
-            width: 0; 
-            height: 2.5px; 
-            background: linear-gradient(90deg, #10b981, #059669);
-            transition: width 0.4s ease;
-        }
-
-        .nav-link:hover { 
-            color: #10b981;
-        }
-
-        .nav-link:hover::after { 
-            width: 100%; 
-        }
-
-        .card-premium { 
+        .card { 
+            border: 1px solid;
+            border-radius: 16px;
+            padding: 24px;
             transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
-            cursor: pointer;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            backdrop-filter: blur(8px);
         }
-
-        .card-premium:hover { 
-            transform: translateY(-12px);
-            border-color: rgba(16, 185, 129, 0.4);
-            box-shadow: 0 20px 50px rgba(16, 185, 129, 0.15);
-        }
-
-        .btn-premium {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            border: none;
+        
+        .btn-primary {
             padding: 14px 32px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 600;
-            color: white;
-            font-size: 16px;
-        }
-
-        .btn-premium::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: left 0.6s ease;
-        }
-
-        .btn-premium:hover::before {
-            left: 100%;
-        }
-
-        .btn-premium:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn-premium:active {
-            transform: translateY(0);
-        }
-
-        .contact-card {
-            transition: all 0.4s ease;
+            border: none;
             cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
         }
-
-        .contact-card:hover {
-            border-color: #10b981;
-            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.2);
-            transform: translateY(-6px);
-        }
-
-        .faq-item {
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .faq-item.active {
-            border-color: #10b981;
-            background: rgba(16, 185, 129, 0.08);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.12);
-        }
-
-        .faq-item:hover {
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-
-        html { scroll-behavior: smooth; }
+        
+        .btn-primary:hover { transform: translateY(-2px); }
+        .btn-primary:active { transform: translateY(0); }
         
         .text-lang { display: none; }
         .text-lang.active { display: inline; }
-
+        
+        html { scroll-behavior: smooth; }
+        
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
-
-        .accent-green { color: #10b981; }
-        .accent-green-bg { background: rgba(16, 185, 129, 0.1); }
-
-        .text-subtitle { color: #9ca3af; font-weight: 500; }
-        .text-body { color: #d1d5db; line-height: 1.7; }
+        
+        .theme-toggle {
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid;
+            background: transparent;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.6;
+        }
+        
+        .faq-item { 
+            border: 1px solid;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .faq-item.active {
+            border-color: var(--accent-color);
+        }
+        
+        .faq-answer { 
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
     </style>
 </head>
 <body>
 
 <!-- NAVIGATION -->
-<nav class="fixed top-0 w-full z-50 glass-premium border-b border-emerald-900/30 animate-slide-down">
+<nav class="nav-bar fixed top-0 w-full z-50 animate-slide-down">
     <div class="max-w-7xl mx-auto px-4 md:px-6 py-5 flex justify-between items-center">
-        <div class="flex items-center gap-4 cursor-pointer hover:opacity-80 transition">
-            <svg class="w-12 h-12 hover:rotate-6 transition" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="95" stroke="#0f0f15" stroke-width="3" fill="none"/>
-                <circle cx="100" cy="100" r="90" stroke="#10b981" stroke-width="2.5" fill="none"/>
-                <text x="100" y="110" font-size="60" font-weight="900" text-anchor="middle" fill="#0f0f15" font-family="Raleway">CM</text>
-            </svg>
-            <div class="font-black text-lg hidden md:block" style="font-family: 'Raleway', sans-serif;">
-                CLASS <span class="accent-green">METAL</span>
+        <div class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition">
+            <div class="w-10 h-10 rounded-lg accent-gradient flex items-center justify-center">
+                <span class="font-black text-white text-lg" style="font-family: 'Space Grotesk';">CM</span>
+            </div>
+            <div class="font-bold hidden md:block" style="font-family: 'Space Grotesk'; font-size: 18px;">
+                CLASS <span class="accent-color">METAL</span>
             </div>
         </div>
 
-        <div class="hidden md:flex gap-10 text-sm font-600">
-            <a href="#products" class="nav-link"><span class="text-lang lang-bg active">ПРОДУКТИ</span><span class="text-lang lang-en">PRODUCTS</span><span class="text-lang lang-gr">ΠΡΟΪΟΝΤΑ</span></a>
-            <a href="#why-us" class="nav-link"><span class="text-lang lang-bg active">ПРЕИМУЩЕСТВА</span><span class="text-lang lang-en">WHY US</span><span class="text-lang lang-gr">ΓΙΑΤΙ</span></a>
-            <a href="#faq" class="nav-link"><span class="text-lang lang-bg active">ВЪПРОСИ</span><span class="text-lang lang-en">FAQ</span><span class="text-lang lang-gr">ΕΡΩΤΗΣΕΙΣ</span></a>
-            <a href="#contact" class="nav-link"><span class="text-lang lang-bg active">КОНТАКТ</span><span class="text-lang lang-en">CONTACT</span><span class="text-lang lang-gr">ΕΠΙΚΟΙΝΩΝΙΑ</span></a>
+        <div class="hidden md:flex gap-8 text-sm font-500">
+            <a href="#products" class="hover:accent-color transition"><span class="text-lang lang-bg active">ПРОДУКТИ</span><span class="text-lang lang-en">PRODUCTS</span><span class="text-lang lang-gr">ΠΡΟΪΟΝΤΑ</span></a>
+            <a href="#why-us" class="hover:accent-color transition"><span class="text-lang lang-bg active">ЗАЩО НИЕ</span><span class="text-lang lang-en">WHY US</span><span class="text-lang lang-gr">ΓΙΑΤΙ</span></a>
+            <a href="#faq" class="hover:accent-color transition"><span class="text-lang lang-bg active">ВЪПРОСИ</span><span class="text-lang lang-en">FAQ</span><span class="text-lang lang-gr">ΕΡΩΤΗΣΕΙΣ</span></a>
+            <a href="#contact" class="hover:accent-color transition"><span class="text-lang lang-bg active">КОНТАКТ</span><span class="text-lang lang-en">CONTACT</span><span class="text-lang lang-gr">ΕΠΙΚΟΙΝΩΝΙΑ</span></a>
         </div>
 
         <div class="flex gap-4 items-center">
-            <div class="flex gap-2 bg-slate-900/40 p-1.5 rounded-lg border border-emerald-900/30">
-                <button onclick="changeLang('bg')" id="btn-bg" class="px-3 py-1 text-xs font-bold rounded transition bg-emerald-600 text-white cursor-pointer">БГ</button>
-                <button onclick="changeLang('en')" id="btn-en" class="px-3 py-1 text-xs font-bold rounded transition cursor-pointer hover:bg-emerald-600/20">EN</button>
-                <button onclick="changeLang('gr')" id="btn-gr" class="px-3 py-1 text-xs font-bold rounded transition cursor-pointer hover:bg-emerald-600/20">GR</button>
+            <div class="flex gap-2 p-1 rounded-lg border">
+                <button onclick="changeLang('bg')" id="btn-bg" class="px-3 py-1 text-xs font-bold rounded transition bg-opacity-20 accent-color">БГ</button>
+                <button onclick="changeLang('en')" id="btn-en" class="px-3 py-1 text-xs font-bold rounded transition hover:bg-opacity-10">EN</button>
+                <button onclick="changeLang('gr')" id="btn-gr" class="px-3 py-1 text-xs font-bold rounded transition hover:bg-opacity-10">GR</button>
             </div>
-            <a href="tel:+359896909011" class="hidden md:block btn-premium" style="padding: 10px 20px; font-size: 14px;">☎️</a>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+            <a href="tel:+359896909011" class="hidden md:block btn-primary">☎️</a>
         </div>
     </div>
 </nav>
 
 <!-- HERO SECTION -->
-<section class="hero-bg min-h-screen flex items-center justify-center pt-24 pb-20 px-4 md:px-6 relative">
-    <div class="max-w-6xl mx-auto text-center relative z-10">
+<section class="hero-section relative min-h-screen flex items-center justify-center pt-24 pb-20 px-4 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="hero-blob w-96 h-96 animate-blob top-20 left-10 accent-gradient opacity-10"></div>
+        <div class="hero-blob w-80 h-80 animate-blob bottom-20 right-20 accent-gradient opacity-5" style="animation-delay: 2s;"></div>
+    </div>
+    
+    <div class="max-w-5xl mx-auto text-center relative z-10">
         <div class="mb-10 animate-fade-in-up">
-            <span class="inline-block accent-green-bg border border-emerald-600/40 accent-green px-6 py-3 rounded-full text-xs md:text-sm font-600 backdrop-blur-sm">
-                ⭐ <span class="text-lang lang-bg active">ВОДЕЩА КОМПАНИЯ В РЕГИОНА</span><span class="text-lang lang-en">LEADING COMPANY IN THE REGION</span><span class="text-lang lang-gr">ΚΟΡΥΦΑΙΑ ΕΤΑΙΡΕΙΑ ΣΤΗ ΠΕΡΙΟΧΗ</span>
+            <span class="inline-block px-6 py-3 rounded-full text-xs md:text-sm font-600 accent-gradient text-white">
+                ✨ <span class="text-lang lang-bg active">ВОДЕЩА КОМПАНИЯ В РЕГИОНА</span><span class="text-lang lang-en">LEADING COMPANY</span><span class="text-lang lang-gr">ΚΟΡΥΦΑΙΑ ΕΤΑΙΡΕΙΑ</span>
             </span>
         </div>
 
-        <h1 class="text-7xl md:text-9xl font-black mb-6 tracking-tight animate-fade-in-up delay-1" style="font-family: 'Raleway', sans-serif; letter-spacing: -0.02em;">
-            <span class="block text-white">CLASS</span>
-            <span class="block gradient-text glow-text">METAL</span>
+        <h1 class="text-6xl md:text-8xl font-black mb-8 animate-fade-in-up delay-1 tracking-tight" style="font-family: 'Space Grotesk';">
+            CLASS <span class="accent-color">METAL</span>
         </h1>
 
-        <p class="text-xl md:text-2xl mb-8 font-light text-slate-300 animate-fade-in-up delay-2" style="font-family: 'Raleway', sans-serif;">
-            <span class="text-lang lang-bg active">ПРЕМИУМ АРМАТУРА ЗА СТРОИТЕЛСТВОТО</span>
-            <span class="text-lang lang-en">PREMIUM REINFORCEMENT FOR CONSTRUCTION</span>
-            <span class="text-lang lang-gr">PREMIUM ΧΑΛΥΒΔΑΣ ΓΙΑ ΤΗ ΚΑΤΑΣΚΕΥΗ</span>
+        <p class="text-lg md:text-2xl mb-8 font-500 text-muted animate-fade-in-up delay-2">
+            <span class="text-lang lang-bg active">ПРЕМИУМ АРМАТУРА И МЕТАЛНИ КОНСТРУКЦИИ</span>
+            <span class="text-lang lang-en">PREMIUM REINFORCEMENT & METAL SOLUTIONS</span>
+            <span class="text-lang lang-gr">PREMIUM ΧΑΛΥΒΔΑΣ ΚΑΙ ΜΕΤΑΛΛΙΚΕΣ ΚΑΤΑΣΚΕΥΕΣ</span>
         </p>
 
-        <p class="text-base md:text-lg text-body mb-14 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-3">
-            <span class="text-lang lang-bg active">"Клас Метал" ООД е специализиран арматурен двор в гр. Хаджидимово. Предлагаме висококачествена арматура, метални тръби, профили и ламарина. Извършваме професионална обработка - рязане, огъване и изработка по Ваша спецификация и проектна документация.</span>
-            <span class="text-lang lang-en">"Class Metal" LTD is a specialized reinforcement yard in Hadzhidimovo. We offer premium reinforcement steel, metal pipes, profiles and sheets. Professional processing - cutting, bending and custom manufacturing according to your specifications.</span>
-            <span class="text-lang lang-gr">"Class Metal" ΕΠΕ είναι ειδικευμένο χαλυβδουργείο στο Χαντζίδιμοβο. Προσφέρουμε premium χάλυβα ενίσχυσης, μεταλλικούς σωλήνες και φύλλα. Επαγγελματική επεξεργασία - κοπή, κάμψη και κατασκευή κατά παραγγελία.</span>
+        <p class="text-base md:text-lg text-muted mb-14 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-3">
+            <span class="text-lang lang-bg active">Специализирана компания за професионална обработка на арматура, метални тръби, профили и ламарина. Рязане, огъване и изработка по Ваша спецификация с гарантирано качество.</span>
+            <span class="text-lang lang-en">Specialized in professional reinforcement processing, metal pipes, profiles and sheets. Cutting, bending and custom manufacturing with guaranteed quality.</span>
+            <span class="text-lang lang-gr">Ειδικευμένη στην επεξεργασία χάλυβα, μεταλλικών σωλήνων και φύλλων. Κοπή, κάμψη και κατασκευή κατά παραγγελία.</span>
         </p>
 
         <div class="flex flex-col md:flex-row gap-5 justify-center mb-16 animate-fade-in-up delay-4">
-            <a href="tel:+359896909011" class="btn-premium inline-block text-center">
-                📞 <span class="text-lang lang-bg active">+359 896 909011</span>
+            <a href="tel:+359896909011" class="btn-primary">
+                📞 <span class="text-lang lang-bg active">ПОЗВЪНЕТЕ</span><span class="text-lang lang-en">CALL NOW</span><span class="text-lang lang-gr">ΚΑΛΕΣΤΕ</span>
             </a>
-            <a href="#products" class="border-2 border-emerald-600/50 hover:border-emerald-600 hover:bg-emerald-600/10 px-8 py-3 rounded-lg font-600 cursor-pointer transition-all duration-400 inline-block">
-                <span class="text-lang lang-bg active">РАЗГЛЕДАЙТЕ КАТАЛОГ ↓</span>
-                <span class="text-lang lang-en">VIEW CATALOG ↓</span>
-                <span class="text-lang lang-gr">ΔΕΙΤΕ ΤΟΝ ΚΑΤΑΛΟΓΟ ↓</span>
+            <a href="#products" class="border-2 accent-color px-8 py-3 rounded-lg font-600 cursor-pointer transition hover:bg-opacity-10 inline-block">
+                <span class="text-lang lang-bg active">РАЗГЛЕДАЙТЕ ↓</span><span class="text-lang lang-en">EXPLORE ↓</span><span class="text-lang lang-gr">ΔΕΙΤΕ ↓</span>
             </a>
         </div>
 
         <div class="grid grid-cols-3 gap-6 max-w-3xl mx-auto animate-fade-in-up delay-4">
-            <div class="glass-premium p-6 rounded-xl card-premium">
-                <div class="text-3xl md:text-4xl font-black accent-green mb-2">4</div>
-                <div class="text-subtitle text-xs"><span class="text-lang lang-bg active">Години опит</span><span class="text-lang lang-en">Years of Experience</span><span class="text-lang lang-gr">Χρόνια Εμπειρίας</span></div>
+            <div class="card">
+                <div class="text-3xl font-black accent-color mb-2">4</div>
+                <div class="text-muted text-xs"><span class="text-lang lang-bg active">Години опит</span><span class="text-lang lang-en">Years</span><span class="text-lang lang-gr">Χρόνια</span></div>
             </div>
-            <div class="glass-premium p-6 rounded-xl card-premium">
-                <div class="text-3xl md:text-4xl font-black accent-green mb-2">500+</div>
-                <div class="text-subtitle text-xs"><span class="text-lang lang-bg active">Доволни клиенти</span><span class="text-lang lang-en">Happy Clients</span><span class="text-lang lang-gr">Ικανοποιημένοι Πελάτες</span></div>
+            <div class="card">
+                <div class="text-3xl font-black accent-color mb-2">500+</div>
+                <div class="text-muted text-xs"><span class="text-lang lang-bg active">Клиенти</span><span class="text-lang lang-en">Clients</span><span class="text-lang lang-gr">Πελάτες</span></div>
             </div>
-            <div class="glass-premium p-6 rounded-xl card-premium">
-                <div class="text-3xl md:text-4xl font-black accent-green mb-2">100%</div>
-                <div class="text-subtitle text-xs"><span class="text-lang lang-bg active">Качество</span><span class="text-lang lang-en">Quality</span><span class="text-lang lang-gr">Ποιότητα</span></div>
+            <div class="card">
+                <div class="text-3xl font-black accent-color mb-2">100%</div>
+                <div class="text-muted text-xs"><span class="text-lang lang-bg active">Качество</span><span class="text-lang lang-en">Quality</span><span class="text-lang lang-gr">Ποιότητα</span></div>
             </div>
         </div>
     </div>
 
-    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-float cursor-pointer">
-        <div class="accent-green text-sm font-600 text-center">
-            <span class="text-lang lang-bg active">↓ ПРОКРУТЕТЕ ↓</span>
-            <span class="text-lang lang-en">↓ SCROLL ↓</span>
-            <span class="text-lang lang-gr">↓ ΚΥΛΙΣΤΕ ↓</span>
+    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-float">
+        <div class="accent-color text-sm font-600 text-center">
+            <span class="text-lang lang-bg active">↓ ПРОКРУТЕТЕ ↓</span><span class="text-lang lang-en">↓ SCROLL ↓</span><span class="text-lang lang-gr">↓ ΚΥΛΙΣΤΕ ↓</span>
         </div>
     </div>
 </section>
 
 <!-- PRODUCTS SECTION -->
-<section id="products" class="py-32 px-4 md:px-6 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900">
+<section id="products" class="py-32 px-4 md:px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-20">
-            <h2 class="text-5xl md:text-6xl font-black mb-4" style="font-family: 'Raleway', sans-serif;">
-                <span class="text-lang lang-bg active">НАШИ ПРОДУКТИ</span>
-                <span class="text-lang lang-en">OUR PRODUCTS</span>
-                <span class="text-lang lang-gr">ΤΑ ΠΡΟΪΟΝΤΑ ΜΑΣ</span>
+            <h2 class="text-5xl md:text-6xl font-black mb-4" style="font-family: 'Space Grotesk';">
+                <span class="text-lang lang-bg active">НАШИ ПРОДУКТИ</span><span class="text-lang lang-en">OUR PRODUCTS</span><span class="text-lang lang-gr">ΤΑ ΠΡΟΪΟΝΤΑ</span>
             </h2>
-            <p class="text-subtitle">
-                <span class="text-lang lang-bg active">Все необходимое для вашего проекта</span>
-                <span class="text-lang lang-en">Everything you need for your project</span>
-                <span class="text-lang lang-gr">Όλα όσα χρειάζεστε για το έργο σας</span>
-            </p>
+            <p class="text-muted"><span class="text-lang lang-bg active">Всичко необходимо за проекта</span><span class="text-lang lang-en">Everything you need</span><span class="text-lang lang-gr">Όλα όσα χρειάζεστε</span></p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-7">
-            <div class="glass-premium p-8 rounded-xl card-premium">
-                <h3 class="text-2xl font-black mb-4 accent-green" style="font-family: 'Raleway', sans-serif;">🔗 <span class="text-lang lang-bg active">АРМАТУРА</span><span class="text-lang lang-en">REINFORCEMENT</span><span class="text-lang lang-gr">ΟΠΛΙΣΜΟΣ</span></h3>
-                <p class="text-body text-sm"><span class="text-lang lang-bg active">Висококачествено армиращо желязо - различни диаметри, всички сертифицирани</span><span class="text-lang lang-en">High-quality reinforcement steel - various diameters, certified</span><span class="text-lang lang-gr">Χάλυβα ενίσχυσης - διάφορες διάμετροι, πιστοποιημένα</span></p>
-            </div>
-
-            <div class="glass-premium p-8 rounded-xl card-premium">
-                <h3 class="text-2xl font-black mb-4 accent-green" style="font-family: 'Raleway', sans-serif;">📐 <span class="text-lang lang-bg active">ПРОФИЛИ</span><span class="text-lang lang-en">PROFILES</span><span class="text-lang lang-gr">ΠΡΟΦΙΛ</span></h3>
-                <p class="text-body text-sm"><span class="text-lang lang-bg active">Метални профили различни форми - правоъгълни, кръгли, специални</span><span class="text-lang lang-en">Metal profiles various shapes - rectangular, round, special</span><span class="text-lang lang-gr">Μεταλλικά προφίλ - διάφορα σχήματα, κατά παραγγελία</span></p>
-            </div>
-
-            <div class="glass-premium p-8 rounded-xl card-premium">
-                <h3 class="text-2xl font-black mb-4 accent-green" style="font-family: 'Raleway', sans-serif;">🔷 <span class="text-lang lang-bg active">ТРЪБИ</span><span class="text-lang lang-en">PIPES</span><span class="text-lang lang-gr">ΣΩΛΗΝΕΣ</span></h3>
-                <p class="text-body text-sm"><span class="text-lang lang-bg active">Метални тръби за конструкции - безшевни, конструкционни</span><span class="text-lang lang-en">Metal pipes for construction - seamless, structural</span><span class="text-lang lang-gr">Μεταλλικές σωλήνες για κατασκευές - άσωστες, δομικές</span></p>
-            </div>
-
-            <div class="glass-premium p-8 rounded-xl card-premium">
-                <h3 class="text-2xl font-black mb-4 accent-green" style="font-family: 'Raleway', sans-serif;">📋 <span class="text-lang lang-bg active">ЛАМАРИНА</span><span class="text-lang lang-en">SHEETS</span><span class="text-lang lang-gr">ΦΥΛΛΑ</span></h3>
-                <p class="text-body text-sm"><span class="text-lang lang-bg active">Метални листове различни дебелини - висока точност</span><span class="text-lang lang-en">Metal sheets various thickness - high precision</span><span class="text-lang lang-gr">Μεταλλικά φύλλα - διάφορα πάχη, ακρίβεια χιλιοστού</span></p>
-            </div>
-
-            <div class="glass-premium p-8 rounded-xl card-premium">
-                <h3 class="text-2xl font-black mb-4 accent-green" style="font-family: 'Raleway', sans-serif;">🕸️ <span class="text-lang lang-bg active">МРЕЖИ</span><span class="text-lang lang-en">MESHES</span><span class="text-lang lang-gr">ΔΙΚΤΥΑ</span></h3>
-                <p class="text-body text-sm"><span class="text-lang lang-bg active">Арматурни мрежи и оградни мрежи - различни размери</span><span class="text-lang lang-en">Reinforcement and fence meshes - various sizes</span><span class="text-lang lang-gr">Δίκτυα οπλισμού και περίφραξης - διάφορα μεγέθη</span></p>
-            </div>
-
-            <div class="glass-premium p-8 rounded-xl card-premium">
-                <h3 class="text-2xl font-black mb-4 accent-green" style="font-family: 'Raleway', sans-serif;">⚙️ <span class="text-lang lang-bg active">ОБРАБОТКА</span><span class="text-lang lang-en">PROCESSING</span><span class="text-lang lang-gr">ΕΠΕΞΕΡΓΑΣΙΑ</span></h3>
-                <p class="text-body text-sm"><span class="text-lang lang-bg active">Рязане, огъване и подготовка по Ваша спецификация</span><span class="text-lang lang-en">Cutting, bending and preparation by specification</span><span class="text-lang lang-gr">Κοπή, κάμψη και προετοιμασία κατά προδιαγραφή</span></p>
-            </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="card"><h3 class="text-xl font-black accent-color mb-3">🔗 <span class="text-lang lang-bg active">АРМАТУРА</span><span class="text-lang lang-en">REINFORCEMENT</span><span class="text-lang lang-gr">ΟΠΛΙΣΜΟΣ</span></h3><p class="text-muted text-sm"><span class="text-lang lang-bg active">Висок клас армиращо желязо, всички диаметри</span><span class="text-lang lang-en">Premium reinforcement steel</span><span class="text-lang lang-gr">Premium χάλυβα ενίσχυσης</span></p></div>
+            <div class="card"><h3 class="text-xl font-black accent-color mb-3">📐 <span class="text-lang lang-bg active">ПРОФИЛИ</span><span class="text-lang lang-en">PROFILES</span><span class="text-lang lang-gr">ΠΡΟΦΙΛ</span></h3><p class="text-muted text-sm"><span class="text-lang lang-bg active">Метални профили всякакви форми</span><span class="text-lang lang-en">Metal profiles all shapes</span><span class="text-lang lang-gr">Μεταλλικά προφίλ</span></p></div>
+            <div class="card"><h3 class="text-xl font-black accent-color mb-3">🔷 <span class="text-lang lang-bg active">ТРЪБИ</span><span class="text-lang lang-en">PIPES</span><span class="text-lang lang-gr">ΣΩΛΗΝΕΣ</span></h3><p class="text-muted text-sm"><span class="text-lang lang-bg active">Конструкционни тръби</span><span class="text-lang lang-en">Structural pipes</span><span class="text-lang lang-gr">Δομικές σωλήνες</span></p></div>
+            <div class="card"><h3 class="text-xl font-black accent-color mb-3">📋 <span class="text-lang lang-bg active">ЛАМАРИНА</span><span class="text-lang lang-en">SHEETS</span><span class="text-lang lang-gr">ΦΥΛΛΑ</span></h3><p class="text-muted text-sm"><span class="text-lang lang-bg active">Метални листове, висока точност</span><span class="text-lang lang-en">Metal sheets precision</span><span class="text-lang lang-gr">Μεταλλικά φύλλα</span></p></div>
+            <div class="card"><h3 class="text-xl font-black accent-color mb-3">🕸️ <span class="text-lang lang-bg active">МРЕЖИ</span><span class="text-lang lang-en">MESHES</span><span class="text-lang lang-gr">ΔΙΚΤΥΑ</span></h3><p class="text-muted text-sm"><span class="text-lang lang-bg active">Арматурни и оградни мрежи</span><span class="text-lang lang-en">Reinforcement meshes</span><span class="text-lang lang-gr">Δίκτυα οπλισμού</span></p></div>
+            <div class="card"><h3 class="text-xl font-black accent-color mb-3">⚙️ <span class="text-lang lang-bg active">ОБРАБОТКА</span><span class="text-lang lang-en">PROCESSING</span><span class="text-lang lang-gr">ΕΠΕΞΕΡΓΑΣΙΑ</span></h3><p class="text-muted text-sm"><span class="text-lang lang-bg active">Рязане, огъване по спецификация</span><span class="text-lang lang-en">Cutting & bending</span><span class="text-lang lang-gr">Κοπή και κάμψη</span></p></div>
         </div>
 
-        <div class="glass-premium p-10 md:p-14 rounded-xl text-center mt-16 card-premium border-emerald-600/30">
-            <h3 class="text-2xl font-black mb-6 accent-green" style="font-family: 'Raleway', sans-serif;">🗺️ <span class="text-lang lang-bg active">Работим в регионите:</span><span class="text-lang lang-en">We serve these regions:</span><span class="text-lang lang-gr">Εργαζόμαστε στις περιοχές:</span></h3>
-            <p class="text-lg font-600 text-slate-200">Гоце Делчев • Банско • Благоевград • София</p>
+        <div class="card mt-12 text-center border-2 accent-color">
+            <h3 class="text-2xl font-black accent-color mb-4">🗺️ <span class="text-lang lang-bg active">Работим в региона на:</span><span class="text-lang lang-en">We serve:</span><span class="text-lang lang-gr">Εργαζόμαστε:</span></h3>
+            <p class="font-600">Гоце Делчев • Банско • Благоевград • София</p>
         </div>
     </div>
 </section>
 
 <!-- WHY US SECTION -->
-<section id="why-us" class="py-32 px-4 md:px-6 bg-slate-900">
+<section id="why-us" class="py-32 px-4 md:px-6 section-alt">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-20">
-            <h2 class="text-5xl md:text-6xl font-black mb-4" style="font-family: 'Raleway', sans-serif;">
-                <span class="text-lang lang-bg active">ЗАЩО КЛАСС МЕТАЛ?</span>
-                <span class="text-lang lang-en">WHY CLASS METAL?</span>
-                <span class="text-lang lang-gr">ΓΙΑΤΙ CLASS METAL?</span>
+            <h2 class="text-5xl md:text-6xl font-black" style="font-family: 'Space Grotesk';">
+                <span class="text-lang lang-bg active">ЗАЩО НИЕ?</span><span class="text-lang lang-en">WHY US?</span><span class="text-lang lang-gr">ΓΙΑΤΙ ΕМ;</span>
             </h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8">
-            <div class="glass-premium p-9 rounded-xl card-premium border-emerald-600/30">
-                <h3 class="text-2xl font-black mb-4 accent-green flex items-center gap-3" style="font-family: 'Raleway', sans-serif;">🎯 <span class="text-lang lang-bg active">ТОЧНОСТ</span><span class="text-lang lang-en">PRECISION</span><span class="text-lang lang-gr">ΑΚΡΙΒΕΙΑ</span></h3>
-                <p class="text-body"><span class="text-lang lang-bg active">Обработка до миллиметъра точност. Всяко парче е проверено и сертифицирано преди доставка. Нямаме място за грешки.</span><span class="text-lang lang-en">Processing to millimeter precision. Every piece is inspected and certified before delivery. No room for error.</span><span class="text-lang lang-gr">Επεξεργασία με ακρίβεια χιλιοστού. Κάθε τεμάχιο ελέγχεται και πιστοποιείται.</span></p>
-            </div>
-
-            <div class="glass-premium p-9 rounded-xl card-premium border-emerald-600/30">
-                <h3 class="text-2xl font-black mb-4 accent-green flex items-center gap-3" style="font-family: 'Raleway', sans-serif;">⚡ <span class="text-lang lang-bg active">БЪРЗО</span><span class="text-lang lang-en">FAST</span><span class="text-lang lang-gr">ΓΡΗΓΟΡΟ</span></h3>
-                <p class="text-body"><span class="text-lang lang-bg active">10 работни дни за големи количества. В повече от случите доставляме по-рано. Всяка заявка е приоритет.</span><span class="text-lang lang-en">10 working days for large orders. Usually deliver earlier. Every request is our priority.</span><span class="text-lang lang-gr">10 εργάσιμες ημέρες για μεγάλες παραγγελίες. Συνήθως παραδίδουμε νωρίτερα.</span></p>
-            </div>
-
-            <div class="glass-premium p-9 rounded-xl card-premium border-emerald-600/30">
-                <h3 class="text-2xl font-black mb-4 accent-green flex items-center gap-3" style="font-family: 'Raleway', sans-serif;">🤝 <span class="text-lang lang-bg active">ГИБКОСТ</span><span class="text-lang lang-en">FLEXIBILITY</span><span class="text-lang lang-gr">ΕΥΕΛΙΞΙΑ</span></h3>
-                <p class="text-body"><span class="text-lang lang-bg active">Работим със всички видове клиенти - строителни фирми, търговци и частни лица. Всяка заявка е уникална.</span><span class="text-lang lang-en">We work with all client types - construction firms, traders and individuals. Each request is unique.</span><span class="text-lang lang-gr">Εργαζόμαστε με όλα είδη πελατών. Κάθε αίτημα είναι μοναδικό.</span></p>
-            </div>
-
-            <div class="glass-premium p-9 rounded-xl card-premium border-emerald-600/30">
-                <h3 class="text-2xl font-black mb-4 accent-green flex items-center gap-3" style="font-family: 'Raleway', sans-serif;">✓ <span class="text-lang lang-bg active">СЕРТИФИЦИРАНО</span><span class="text-lang lang-en">CERTIFIED</span><span class="text-lang lang-gr">ΠΙΣΤΟΠΟΙΗΜΕΝΟ</span></h3>
-                <p class="text-body"><span class="text-lang lang-bg active">4 години опит, 500+ доволни клиенти. Всички продукти с сертификат. Нашата репутация е достатъчна гаранция.</span><span class="text-lang lang-en">4 years experience, 500+ satisfied clients. All products certified. Our reputation speaks for itself.</span><span class="text-lang lang-gr">4 χρόνια εμπειρίας, 500+ ικανοποιημένοι πελάτες. Όλα πιστοποιημένα.</span></p>
-            </div>
+            <div class="card border-2 accent-color"><h3 class="text-2xl font-black accent-color mb-4">🎯 <span class="text-lang lang-bg active">ТОЧНОСТ</span><span class="text-lang lang-en">PRECISION</span><span class="text-lang lang-gr">ΑΚΡΙΒΕΙΑ</span></h3><p class="text-muted"><span class="text-lang lang-bg active">Миллиметрова точност. Всяко парче проверено и сертифицирано.</span><span class="text-lang lang-en">Millimeter precision. Certified quality.</span><span class="text-lang lang-gr">Ακρίβεια χιλιοστού. Πιστοποιημένο.</span></p></div>
+            <div class="card border-2 accent-color"><h3 class="text-2xl font-black accent-color mb-4">⚡ <span class="text-lang lang-bg active">БЪРЗО</span><span class="text-lang lang-en">FAST</span><span class="text-lang lang-gr">ΓΡΗΓΟΡΟ</span></h3><p class="text-muted"><span class="text-lang lang-bg active">10 дни за големи количества, обикновено по-рано.</span><span class="text-lang lang-en">10 days, usually faster.</span><span class="text-lang lang-gr">10 ημέρες, συνήθως γρηγορότερα.</span></p></div>
+            <div class="card border-2 accent-color"><h3 class="text-2xl font-black accent-color mb-4">🤝 <span class="text-lang lang-bg active">ГИБКОСТ</span><span class="text-lang lang-en">FLEXIBLE</span><span class="text-lang lang-gr">ΕΥΕΛΙΞΙΑ</span></h3><p class="text-muted"><span class="text-lang lang-bg active">Работим с всички - фирми, търговци, частни лица.</span><span class="text-lang lang-en">Work with all client types.</span><span class="text-lang lang-gr">Εργαζόμαστε με όλους.</span></p></div>
+            <div class="card border-2 accent-color"><h3 class="text-2xl font-black accent-color mb-4">✓ <span class="text-lang lang-bg active">СЕРТИФИЦИРАНО</span><span class="text-lang lang-en">CERTIFIED</span><span class="text-lang lang-gr">ΠΙΣΤΟΠΟΙΗΜΕΝΟ</span></h3><p class="text-muted"><span class="text-lang lang-bg active">4 години опит, 500+ доволни клиенти, всички с сертификат.</span><span class="text-lang lang-en">4 years, 500+ clients, certified.</span><span class="text-lang lang-gr">4 χρόνια, 500+ πελάτες, πιστοποιημένα.</span></p></div>
         </div>
     </div>
 </section>
 
 <!-- FAQ SECTION -->
-<section id="faq" class="py-32 px-4 md:px-6 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950">
+<section id="faq" class="py-32 px-4 md:px-6">
     <div class="max-w-4xl mx-auto">
         <div class="text-center mb-20">
-            <h2 class="text-5xl md:text-6xl font-black mb-4" style="font-family: 'Raleway', sans-serif;">
-                <span class="text-lang lang-bg active">ЧЕСТО ЗАДАВАНИ ВЪПРОСИ</span>
-                <span class="text-lang lang-en">FREQUENTLY ASKED QUESTIONS</span>
-                <span class="text-lang lang-gr">ΣΥΧΝΕΣ ΕΡΩΤΗΣΕΙΣ</span>
+            <h2 class="text-5xl md:text-6xl font-black" style="font-family: 'Space Grotesk';">
+                <span class="text-lang lang-bg active">ВЪПРОСИ</span><span class="text-lang lang-en">FAQ</span><span class="text-lang lang-gr">ΕΡΩΤΗΣΕΙΣ</span>
             </h2>
         </div>
 
         <div class="space-y-4">
-            <div class="faq-item glass-premium p-7 rounded-xl cursor-pointer" onclick="toggleFaq(this)">
-                <h3 class="text-lg font-black mb-3 accent-green flex justify-between items-center" style="font-family: 'Raleway', sans-serif;">
-                    <span><span class="text-lang lang-bg active">❓ Колко време отнема обработката?</span><span class="text-lang lang-en">❓ How long does processing take?</span><span class="text-lang lang-gr">❓ Πόσος χρόνος χρειάζεται;</span></span>
-                    <span class="text-2xl">+</span>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h3 class="flex justify-between items-center font-black cursor-pointer">
+                    <span><span class="text-lang lang-bg active">❓ Колко време?</span><span class="text-lang lang-en">❓ How long?</span><span class="text-lang lang-gr">❓ Πόσος χρόνος;</span></span>
+                    <span>+</span>
                 </h3>
-                <p class="text-body hidden text-sm"><span class="text-lang lang-bg active">За стандартни заявки - 3-5 работни дни. За големи количества (20+ т.) - 10 дни, обикновено по-рано.</span><span class="text-lang lang-en">Standard orders: 3-5 days. Large quantities: 10 days, usually earlier.</span><span class="text-lang lang-gr">Τυπικές: 3-5 ημέρες. Μεγάλες: 10 ημέρες, συνήθως νωρίτερα.</span></p>
+                <div class="faq-answer text-muted text-sm mt-3"><span class="text-lang lang-bg active">3-5 дни за стандартни. 10 дни за големи (обикновено по-рано).</span><span class="text-lang lang-en">3-5 days standard. 10 days large (usually earlier).</span><span class="text-lang lang-gr">3-5 ημέρες κανονικό. 10 ημέρες μεγάλο.</span></div>
             </div>
 
-            <div class="faq-item glass-premium p-7 rounded-xl cursor-pointer" onclick="toggleFaq(this)">
-                <h3 class="text-lg font-black mb-3 accent-green flex justify-between items-center" style="font-family: 'Raleway', sans-serif;">
-                    <span><span class="text-lang lang-bg active">❓ Минимално количество?</span><span class="text-lang lang-en">❓ Minimum order?</span><span class="text-lang lang-gr">❓ Ελάχιστη ποσότητα;</span></span>
-                    <span class="text-2xl">+</span>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h3 class="flex justify-between items-center font-black cursor-pointer">
+                    <span><span class="text-lang lang-bg active">❓ Минимум?</span><span class="text-lang lang-en">❓ Minimum?</span><span class="text-lang lang-gr">❓ Ελάχιστο;</span></span>
+                    <span>+</span>
                 </h3>
-                <p class="text-body hidden text-sm"><span class="text-lang lang-bg active">Няма минимум. Приемаме всички заявки. Специални цени за големи количества.</span><span class="text-lang lang-en">No minimum. We accept all orders. Special pricing for large quantities.</span><span class="text-lang lang-gr">Χωρίς ελάχιστο. Δεχόμαστε όλες τις παραγγελίες.</span></p>
+                <div class="faq-answer text-muted text-sm mt-3"><span class="text-lang lang-bg active">Нема минимум. Приемаме всички заявки. Специални цени за големи.</span><span class="text-lang lang-en">No minimum. All orders accepted. Special pricing large.</span><span class="text-lang lang-gr">Χωρίς ελάχιστο. Όλες τις παραγγελίες. Ειδικές τιμές.</span></div>
             </div>
 
-            <div class="faq-item glass-premium p-7 rounded-xl cursor-pointer" onclick="toggleFaq(this)">
-                <h3 class="text-lg font-black mb-3 accent-green flex justify-between items-center" style="font-family: 'Raleway', sans-serif;">
-                    <span><span class="text-lang lang-bg active">❓ Доставка до София?</span><span class="text-lang lang-en">❓ Delivery to Sofia?</span><span class="text-lang lang-gr">❓ Παράδοση στη Σόφια;</span></span>
-                    <span class="text-2xl">+</span>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h3 class="flex justify-between items-center font-black cursor-pointer">
+                    <span><span class="text-lang lang-bg active">❓ Доставка София?</span><span class="text-lang lang-en">❓ Sofia delivery?</span><span class="text-lang lang-gr">❓ Σόφια;</span></span>
+                    <span>+</span>
                 </h3>
-                <p class="text-body hidden text-sm"><span class="text-lang lang-bg active">Да! Работим в региона: Гоце Делчев, Банско, Благоевград и София. Безплатна доставка при определени количества.</span><span class="text-lang lang-en">Yes! We serve all regions. Free delivery on qualifying orders.</span><span class="text-lang lang-gr">Ναι! Εργαζόμαστε σε όλες τις περιοχές. Δωρεάν παράδοση.</span></p>
+                <div class="faq-answer text-muted text-sm mt-3"><span class="text-lang lang-bg active">Да! Гоце Делчев, Банско, Благоевград, София. Безплатна доставка.</span><span class="text-lang lang-en">Yes! All regions. Free delivery.</span><span class="text-lang lang-gr">Ναι! Όλες οι περιοχές. Δωρεάν παράδοση.</span></div>
             </div>
 
-            <div class="faq-item glass-premium p-7 rounded-xl cursor-pointer" onclick="toggleFaq(this)">
-                <h3 class="text-lg font-black mb-3 accent-green flex justify-between items-center" style="font-family: 'Raleway', sans-serif;">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h3 class="flex justify-between items-center font-black cursor-pointer">
                     <span><span class="text-lang lang-bg active">❓ Гаранция?</span><span class="text-lang lang-en">❓ Warranty?</span><span class="text-lang lang-gr">❓ Εγγύηση;</span></span>
-                    <span class="text-2xl">+</span>
+                    <span>+</span>
                 </h3>
-                <p class="text-body hidden text-sm"><span class="text-lang lang-bg active">Всички продукти със сертификат. 100% гаранция за качество. Проблеми? Свържи ни веднага.</span><span class="text-lang lang-en">All products certified. 100% quality guaranteed. Issues? Contact us immediately.</span><span class="text-lang lang-gr">Όλα πιστοποιημένα. 100% ποιότητα. Προβλήματα; Επικοινωνήστε μας.</span></p>
+                <div class="faq-answer text-muted text-sm mt-3"><span class="text-lang lang-bg active">100% гаранция качество. Всички с сертификат. Проблеми? Свържи ни.</span><span class="text-lang lang-en">100% quality. Certified. Issues? Contact.</span><span class="text-lang lang-gr">100% ποιότητα. Πιστοποιημένα. Προβλήματα; Καλέστε.</span></div>
             </div>
 
-            <div class="faq-item glass-premium p-7 rounded-xl cursor-pointer" onclick="toggleFaq(this)">
-                <h3 class="text-lg font-black mb-3 accent-green flex justify-between items-center" style="font-family: 'Raleway', sans-serif;">
-                    <span><span class="text-lang lang-bg active">❓ Цени и оферта?</span><span class="text-lang lang-en">❓ Pricing & quote?</span><span class="text-lang lang-gr">❓ Τιμές και προσφορά;</span></span>
-                    <span class="text-2xl">+</span>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h3 class="flex justify-between items-center font-black cursor-pointer">
+                    <span><span class="text-lang lang-bg active">❓ Цени?</span><span class="text-lang lang-en">❓ Pricing?</span><span class="text-lang lang-gr">❓ Τιμές;</span></span>
+                    <span>+</span>
                 </h3>
-                <p class="text-body hidden text-sm"><span class="text-lang lang-bg active">Цени зависят от вида и количество. Позвъни или имейл със спецификация, получи оферта за 24ч.</span><span class="text-lang lang-en">Prices depend on type and quantity. Call or email specs, get quote within 24 hours.</span><span class="text-lang lang-gr">Τιμές εξαρτώνται από τύπο και ποσότητα. Καλέστε για προσφορά.</span></p>
-            </div>
-
-            <div class="faq-item glass-premium p-7 rounded-xl cursor-pointer" onclick="toggleFaq(this)">
-                <h3 class="text-lg font-black mb-3 accent-green flex justify-between items-center" style="font-family: 'Raleway', sans-serif;">
-                    <span><span class="text-lang lang-bg active">❓ Кредит?</span><span class="text-lang lang-en">❓ Credit terms?</span><span class="text-lang lang-gr">❓ Πίστωση;</span></span>
-                    <span class="text-2xl">+</span>
-                </h3>
-                <p class="text-body hidden text-sm"><span class="text-lang lang-bg active">За постоянни клиенти и големи количества - да. Обсъждаме условия индивидуално.</span><span class="text-lang lang-en">For regular clients and large orders - yes. We discuss terms individually.</span><span class="text-lang lang-gr">Για τακτικούς πελάτες - ναι. Συζητούμε τους όρους ατομικά.</span></p>
+                <div class="faq-answer text-muted text-sm mt-3"><span class="text-lang lang-bg active">Зависи от вида и количество. Позвъни със спецификация, оферта за 24ч.</span><span class="text-lang lang-en">Depends type/quantity. Call with specs, quote 24h.</span><span class="text-lang lang-gr">Εξαρτάται από τύπο και ποσότητα. Καλέστε με προδιαγραφές.</span></div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- CONTACT SECTION -->
-<section id="contact" class="py-32 px-4 md:px-6 bg-slate-950">
+<section id="contact" class="py-32 px-4 md:px-6 section-alt">
     <div class="max-w-6xl mx-auto">
         <div class="text-center mb-20">
-            <h2 class="text-5xl md:text-6xl font-black mb-4" style="font-family: 'Raleway', sans-serif;">
-                <span class="text-lang lang-bg active">СВЪРЖЕТЕ СЕ</span>
-                <span class="text-lang lang-en">GET IN TOUCH</span>
-                <span class="text-lang lang-gr">ΕΠΙΚΟΙΝΩΝΗΣΤΕ</span>
+            <h2 class="text-5xl md:text-6xl font-black" style="font-family: 'Space Grotesk';">
+                <span class="text-lang lang-bg active">СВЪРЖЕТЕ СЕ</span><span class="text-lang lang-en">CONTACT</span><span class="text-lang lang-gr">ΕΠΙΚΟΙΝΩΝΗΣΤΕ</span>
             </h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8">
             <div class="space-y-6">
-                <a href="tel:+359896909011" class="glass-premium p-8 rounded-xl contact-card">
-                    <h3 class="text-2xl font-black mb-4 accent-green" style="font-family: 'Raleway', sans-serif;">☎️ <span class="text-lang lang-bg active">ПОЗВЪНЕТЕ</span><span class="text-lang lang-en">CALL</span><span class="text-lang lang-gr">ΚΑΛΕΣΤΕ</span></h3>
-                    <p class="text-2xl accent-green font-black cursor-pointer">+359 896 909011</p>
-                    <p class="text-subtitle text-xs mt-3"><span class="text-lang lang-bg active">Натиснете за позвъняване</span><span class="text-lang lang-en">Click to call</span><span class="text-lang lang-gr">Κάντε κλικ</span></p>
+                <a href="tel:+359896909011" class="card border-2 accent-color">
+                    <h3 class="text-xl font-black accent-color mb-3">☎️ <span class="text-lang lang-bg active">ПОЗВЪНЕТЕ</span><span class="text-lang lang-en">CALL</span><span class="text-lang lang-gr">ΚΑΛΕΣΤΕ</span></h3>
+                    <p class="text-2xl accent-color font-black">+359 896 909011</p>
                 </a>
 
-                <a href="mailto:office@classmetal.bg" class="glass-premium p-8 rounded-xl contact-card">
-                    <h3 class="text-2xl font-black mb-4 accent-green" style="font-family: 'Raleway', sans-serif;">📧 <span class="text-lang lang-bg active">ИМЕЙЛ</span><span class="text-lang lang-en">EMAIL</span><span class="text-lang lang-gr">ΠΟΣ</span></h3>
-                    <p class="accent-green font-bold break-all cursor-pointer">office@classmetal.bg</p>
-                    <p class="text-subtitle text-xs mt-3"><span class="text-lang lang-bg active">Натиснете за имейл</span><span class="text-lang lang-en">Click to email</span><span class="text-lang lang-gr">Κάντε κλικ</span></p>
+                <a href="mailto:office@classmetal.bg" class="card border-2 accent-color">
+                    <h3 class="text-xl font-black accent-color mb-3">📧 <span class="text-lang lang-bg active">ИМЕЙЛ</span><span class="text-lang lang-en">EMAIL</span><span class="text-lang lang-gr">ΠΟΣ</span></h3>
+                    <p class="accent-color font-bold break-all">office@classmetal.bg</p>
                 </a>
 
-                <button onclick="openMaps()" class="glass-premium p-8 rounded-xl contact-card w-full text-left">
-                    <h3 class="text-2xl font-black mb-4 accent-green" style="font-family: 'Raleway', sans-serif;">📍 <span class="text-lang lang-bg active">АДРЕС</span><span class="text-lang lang-en">ADDRESS</span><span class="text-lang lang-gr">ΔΙΕΥΘΥΝΣΗ</span></h3>
-                    <p class="text-body cursor-pointer"><span class="text-lang lang-bg active">гр. Хаджидимово, ул. Младост 33</span><span class="text-lang lang-en">Hadzhidimovo, Youth Street 33</span><span class="text-lang lang-gr">Χαντζίδιμοβο, Onyouth 33</span></p>
-                    <p class="accent-green font-bold cursor-pointer mt-2"><span class="text-lang lang-bg active">Пощенски код: 2933</span><span class="text-lang lang-en">Post Code: 2933</span><span class="text-lang lang-gr">ТΚ: 2933</span></p>
-                    <p class="text-subtitle text-xs mt-3"><span class="text-lang lang-bg active">Натиснете за Google Maps</span><span class="text-lang lang-en">Click for maps</span><span class="text-lang lang-gr">Κάντε κλικ</span></p>
+                <button onclick="openMaps()" class="card border-2 accent-color w-full text-left">
+                    <h3 class="text-xl font-black accent-color mb-3">📍 <span class="text-lang lang-bg active">АДРЕС</span><span class="text-lang lang-en">ADDRESS</span><span class="text-lang lang-gr">ΔΙΕΥΘΥΝΣΗ</span></h3>
+                    <p class="font-500 mb-2"><span class="text-lang lang-bg active">гр. Хаджидимово, ул. Младост 33</span><span class="text-lang lang-en">Hadzhidimovo, Youth St 33</span><span class="text-lang lang-gr">Χαντζίδιμοβο, Youth 33</span></p>
+                    <p class="accent-color font-bold"><span class="text-lang lang-bg active">ПК: 2933</span><span class="text-lang lang-en">ZIP: 2933</span><span class="text-lang lang-gr">ТΚ: 2933</span></p>
                 </button>
 
-                <div class="glass-premium p-8 rounded-xl border-emerald-600/30">
-                    <h3 class="text-2xl font-black mb-3 accent-green" style="font-family: 'Raleway', sans-serif;">👤 <span class="text-lang lang-bg active">УПРАВИТЕЛ</span><span class="text-lang lang-en">MANAGER</span><span class="text-lang lang-gr">ΔΙΕΥΘΥΝΤΗΣ</span></h3>
-                    <p class="text-body font-600">Благой Иванов Пасков</p>
+                <div class="card border-2 accent-color">
+                    <h3 class="text-xl font-black accent-color mb-2">👤 <span class="text-lang lang-bg active">УПРАВИТЕЛ</span><span class="text-lang lang-en">MANAGER</span><span class="text-lang lang-gr">ΔΙΕΥΘΥΝΤΗΣ</span></h3>
+                    <p class="font-600">Благой Иванов Пасков</p>
                 </div>
             </div>
 
-            <div class="glass-premium p-10 rounded-xl border-emerald-600/30">
-                <h3 class="text-3xl font-black mb-8 text-white" style="font-family: 'Raleway', sans-serif;">✉️ <span class="text-lang lang-bg active">ЗАПИТВАНЕ</span><span class="text-lang lang-en">INQUIRY</span><span class="text-lang lang-gr">ΕΡΕΥΝΑ</span></h3>
+            <div class="card border-2 accent-color">
+                <h3 class="text-2xl font-black accent-color mb-8" style="font-family: 'Space Grotesk';">✉️ <span class="text-lang lang-bg active">ЗАПИТВАНЕ</span><span class="text-lang lang-en">INQUIRY</span><span class="text-lang lang-gr">ΕΡΕΥΝΑ</span></h3>
                 
-                <form id="contactForm" onsubmit="sendEmail(event)" class="space-y-5">
-                    <input type="text" placeholder="Име / Name / Όνομα" required class="w-full glass-premium px-5 py-3 rounded-lg border border-emerald-900/30 focus:border-emerald-600 outline-none transition text-white placeholder-slate-500 text-sm">
-                    <input type="email" placeholder="Имейл / Email / Email" required class="w-full glass-premium px-5 py-3 rounded-lg border border-emerald-900/30 focus:border-emerald-600 outline-none transition text-white placeholder-slate-500 text-sm">
-                    <textarea placeholder="Заявка / Inquiry / Ερώτηση" required rows="5" class="w-full glass-premium px-5 py-3 rounded-lg border border-emerald-900/30 focus:border-emerald-600 outline-none transition text-white placeholder-slate-500 text-sm resize-none"></textarea>
-                    <button type="submit" class="w-full btn-premium">
+                <form id="contactForm" onsubmit="sendEmail(event)" class="space-y-4">
+                    <input type="text" placeholder="Име / Name / Όνομα" required class="w-full border rounded-lg px-4 py-3 outline-none focus:border-2 focus:accent-color transition">
+                    <input type="email" placeholder="Имейл / Email / Email" required class="w-full border rounded-lg px-4 py-3 outline-none focus:border-2 focus:accent-color transition">
+                    <textarea placeholder="Заявка / Inquiry / Ερώτηση" required rows="4" class="w-full border rounded-lg px-4 py-3 outline-none focus:border-2 focus:accent-color transition resize-none"></textarea>
+                    <button type="submit" class="w-full btn-primary">
                         🚀 <span class="text-lang lang-bg active">ИЗПРАТИ</span><span class="text-lang lang-en">SEND</span><span class="text-lang lang-gr">ΣΤΕΙΛΕ</span>
                     </button>
                 </form>
@@ -507,7 +385,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-gradient-to-t from-slate-950 via-slate-950 to-slate-900 border-t border-emerald-900/20 py-12 px-4 md:px-6 text-center text-slate-500 text-sm">
+<footer class="py-12 px-4 md:px-6 text-center text-muted border-t">
     <p class="mb-2">© 2024 CLASS METAL LTD. <span class="text-lang lang-bg active">Всички права запазени.</span><span class="text-lang lang-en">All rights reserved.</span><span class="text-lang lang-gr">Όλα τα δικαιώματα διατηρούνται.</span></p>
     <p>📞 +359 896 909011 | 📧 office@classmetal.bg</p>
 </footer>
@@ -516,26 +394,29 @@
 function changeLang(lang) {
     document.querySelectorAll('.text-lang').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('active'));
-    
-    document.getElementById('btn-bg').classList.remove('bg-emerald-600', 'text-white');
-    document.getElementById('btn-en').classList.remove('bg-emerald-600', 'text-white');
-    document.getElementById('btn-gr').classList.remove('bg-emerald-600', 'text-white');
-    
-    if (lang === 'bg') document.getElementById('btn-bg').classList.add('bg-emerald-600', 'text-white');
-    if (lang === 'en') document.getElementById('btn-en').classList.add('bg-emerald-600', 'text-white');
-    if (lang === 'gr') document.getElementById('btn-gr').classList.add('bg-emerald-600', 'text-white');
+    document.getElementById('btn-bg').classList.remove('bg-opacity-20');
+    document.getElementById('btn-en').classList.remove('bg-opacity-20');
+    document.getElementById('btn-gr').classList.remove('bg-opacity-20');
+    if (lang === 'bg') document.getElementById('btn-bg').classList.add('bg-opacity-20');
+    if (lang === 'en') document.getElementById('btn-en').classList.add('bg-opacity-20');
+    if (lang === 'gr') document.getElementById('btn-gr').classList.add('bg-opacity-20');
+}
+
+function toggleTheme() {
+    const btn = document.getElementById('themeToggle');
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        btn.textContent = '☀️';
+    } else {
+        btn.textContent = '🌙';
+    }
 }
 
 function openMaps() {
-    const lat = 41.51857321091021;
-    const lng = 23.858599865138764;
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving`, '_blank');
+    window.open('https://www.google.com/maps/dir/?api=1&destination=41.51857321091021,23.858599865138764&travelmode=driving', '_blank');
 }
 
 function toggleFaq(el) {
     el.classList.toggle('active');
-    const ans = el.querySelector('p');
-    ans.classList.toggle('hidden');
     el.querySelector('span:last-child').textContent = el.classList.contains('active') ? '−' : '+';
 }
 
