@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASS METAL LTD - Професионална Арматура и Метални Конструкции</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(220, 38, 38, 0.5), 0 0 40px rgba(220, 38, 38, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(220, 38, 38, 0.8), 0 0 60px rgba(220, 38, 38, 0.5);
+            }
+        }
+
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slide-down {
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .glow-text {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: blob 8s infinite;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: blob 8s infinite 2s;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #dc2626;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            border-color: #dc2626;
+        }
+
+        .button-glow {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+
+        .button-glow:hover::before {
+            left: 100%;
+        }
+
+        .logo-container {
+            width: 100%;
+            max-width: 150px;
+            object-fit: contain;
+        }
+
+        /* Language visibility */
+        .lang-en, .lang-gr { display: none; }
+        
+        [lang="en"] .lang-en { display: inline; }
+        [lang="en"] .lang-bg, [lang="en"] .lang-gr { display: none; }
+        
+        [lang="gr"] .lang-gr { display: inline; }
+        [lang="gr"] .lang-bg, [lang="gr"] .lang-en { display: none; }
+        
+        [lang="bg"] .lang-bg { display: inline; }
+        [lang="bg"] .lang-en, [lang="bg"] .lang-gr { display: none; }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="bg-black text-white" lang="bg">
+
+<!-- NAVIGATION -->
+<nav class="fixed top-0 w-full z-50 glass border-b border-red-600/20 animate-slide-down">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+            <svg class="w-12 h-12" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="95" stroke="#1a1a1a" stroke-width="3" fill="none"/>
+                <circle cx="100" cy="100" r="90" stroke="#dc2626" stroke-width="2" fill="none"/>
+                <text x="100" y="110" font-size="60" font-weight="900" text-anchor="middle" fill="#1a1a1a" font-family="Arial">CM</text>
+            </svg>
+            <div class="font-black text-lg hidden md:block">
+                <span class="text-red-600">CLASS</span> METAL
+            </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-8 text-sm font-bold">
+            <a href="#products" class="nav-link lang-bg">ПРОДУКТИ</a>
+            <a href="#products" class="nav-link lang-en">PRODUCTS</a>
+            <a href="#products" class="nav-link lang-gr">ΠΡΟΪΟΝΤΑ</a>
+            
+            <a href="#services" class="nav-link lang-bg">УСЛУГИ</a>
+            <a href="#services" class="nav-link lang-en">SERVICES</a>
+            <a href="#services" class="nav-link lang-gr">ΥΠΗΡΕΣΙΕΣ</a>
+            
+            <a href="#contact" class="nav-link lang-bg">КОНТАКТ</a>
+            <a href="#contact" class="nav-link lang-en">CONTACT</a>
+            <a href="#contact" class="nav-link lang-gr">ΕΠΙΚΟΙΝΩΝΙΑ</a>
+        </div>
+
+        <!-- Language Switcher & Call Button -->
+        <div class="flex gap-4 items-center">
+            <div class="flex gap-2 bg-slate-900/50 p-1 rounded-lg">
+                <button onclick="changeLang('bg')" class="px-3 py-1 text-xs font-bold rounded transition bg-red-600 text-white">БГ</button>
+                <button onclick="changeLang('en')" class="px-3 py-1 text-xs font-bold rounded transition hover:bg-red-600/30">EN</button>
+                <button onclick="changeLang('gr')" class="px-3 py-1 text-xs font-bold rounded transition hover:bg-red-600/30">GR</button>
+            </div>
+            <a href="tel:+359896909011" class="hidden md:block bg-gradient-to-r from-red-600 to-red-700 px-6 py-2 rounded font-bold text-sm hover:shadow-lg hover:shadow-red-600/50 transition button-glow">
+                ☎️
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero-bg min-h-screen flex items-center justify-center pt-24 pb-20 px-4 md:px-6 relative">
+    <div class="absolute inset-0 bg-gradient-to-br from-red-950/20 via-black to-black z-0"></div>
+    
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+        <!-- Badge -->
+        <div class="mb-8 animate-fade-in-up">
+            <span class="inline-block bg-red-600/20 border border-red-600 text-red-500 px-6 py-2 rounded-full text-xs md:text-sm font-bold">
+                🔥 <span class="lang-bg">НАЙ-ДОБРИЯТ АРМАТУРЕН ДВОР В РЕГИОНА</span>
+                <span class="lang-en">THE BEST REINFORCEMENT YARD IN THE REGION</span>
+                <span class="lang-gr">Το ΚΑΛΥΤΕΡΟ ΧΑΛΥΒΔ ΟΠΛΙΣΜΟΥ ΣΤΗ ΠΕΡΙΟΧΗ</span>
+            </span>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter animate-fade-in-up delay-1">
+            <span class="block text-white">CLASS</span>
+            <span class="block gradient-text glow-text">METAL</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-lg md:text-3xl mb-8 font-light text-slate-200 animate-fade-in-up delay-2">
+            <span class="lang-bg">ПРОФЕСИОНАЛНА АРМАТУРА ЗА СТРОИТЕЛСТВОТО</span>
+            <span class="lang-en">PROFESSIONAL REINFORCEMENT FOR CONSTRUCTION</span>
+            <span class="lang-gr">ΕΠΑΓΓΕΛΜΑΤΙΚΟΣ ΧΑΛΥΒΔΑΣ ΓΙΑ ΤΗ ΚΑΤΑΣΚΕΥΗ</span>
+        </p>
+
+        <!-- Main Description -->
+        <p class="text-base md:text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-3">
+            <span class="lang-bg">"Клас Метал" ООД е арматурен двор, разположен в гр. Хаджидимово, специализиран в продажбата на арматурно желязо, метални тръби, профили и ламарина. Извършваме арматурна заготовка за строителството – рязане, огъване и изработка по Ваша заявка, съобразена с необходимата спецификация и проектна документация.</span>
+            <span class="lang-en">"Class Metal" LTD is a reinforcement yard located in Hadzhidimovo, specialized in the sale of reinforcement steel, metal pipes, profiles and sheets. We perform reinforcement processing for construction – cutting, bending and manufacturing according to your specifications and project documentation.</span>
+            <span class="lang-gr">"Class Metal" ΕΠΕ είναι μια αποθήκη ενίσχυσης στο Χαντζίδιμοβο, ειδικευμένη στην πώληση χάλυβα ενίσχυσης, μεταλλικών σωλήνων, προφίλ και φύλλων.</span>
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col md:flex-row gap-4 justify-center mb-12 animate-fade-in-up delay-4">
+            <a href="tel:+359896909011" class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-8 py-4 rounded-lg font-black text-base md:text-lg transition transform hover:scale-105 button-glow">
+                📞 +359 896 909011
+            </a>
+            <a href="#products" class="border-2 border-red-600 hover:bg-red-600 text-red-500 hover:text-white px-8 py-4 rounded-lg font-black text-base md:text-lg transition transform hover:scale-105">
+                <span class="lang-bg">РАЗГЛЕДАЙТЕ ПРОДУКТИ</span>
+                <span class="lang-en">VIEW PRODUCTS</span>
+                <span class="lang-gr">ΔΕΙΤΕ ΤΑ ΠΡΟΪΟΝΤΑ</span>
+            </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-4 max-w-2xl mx-auto animate-fade-in-up delay-4">
+            <div class="glass p-4 md:p-6 rounded-lg">
+                <div class="text-2xl md:text-3xl font-black text-red-600">20+</div>
+                <div class="text-xs md:text-sm text-slate-400 lang-bg">Години опит</div>
+                <div class="text-xs md:text-sm text-slate-400 lang-en">Years Experience</div>
+                <div class="text-xs md:text-sm text-slate-400 lang-gr">Χρόνια Εμπειρίας</div>
+            </div>
+            <div class="glass p-4 md:p-6 rounded-lg">
+                <div class="text-2xl md:text-3xl font-black text-red-600">500+</div>
+                <div class="text-xs md:text-sm text-slate-400 lang-bg">Доволни клиенти</div>
+                <div class="text-xs md:text-sm text-slate-400 lang-en">Happy Clients</div>
+                <div class="text-xs md:text-sm text-slate-400 lang-gr">Ικανοποιημένοι Πελάτες</div>
+            </div>
+            <div class="glass p-4 md:p-6 rounded-lg">
+                <div class="text-2xl md:text-3xl font-black text-red-600">100%</div>
+                <div class="text-xs md:text-sm text-slate-400 lang-bg">Качество</div>
+                <div class="text-xs md:text-sm text-slate-400 lang-en">Quality</div>
+                <div class="text-xs md:text-sm text-slate-400 lang-gr">Ποιότητα</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float">
+        <div class="text-red-600 text-xs md:text-sm font-bold text-center">
+            <div class="lang-bg">↓ ПРОКРУТЕТЕ ↓</div>
+            <div class="lang-en">↓ SCROLL DOWN ↓</div>
+            <div class="lang-gr">↓ ΚΥΛΙΣΤΕ ↓</div>
+        </div>
+    </div>
+</section>
+
+<!-- VALUES SECTION -->
+<section class="py-20 md:py-32 px-4 md:px-6 bg-gradient-to-b from-black via-red-950/20 to-black relative">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-black mb-6 lang-bg">Нашите Ценности</h2>
+            <h2 class="text-4xl md:text-5xl font-black mb-6 lang-en">Our Values</h2>
+            <h2 class="text-4xl md:text-5xl font-black mb-6 lang-gr">Οι Αξίες Μας</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+            <div class="glass p-8 rounded-2xl border border-red-600/30 hover:border-red-600 transition card-hover">
+                <h3 class="text-3xl font-black mb-4 text-red-600">✓ <span class="lang-bg">Коректност</span><span class="lang-en">Correctness</span><span class="lang-gr">Ορθότητα</span></h3>
+                <p class="text-slate-300 lang-bg">Честна работа, надежност и прозрачност във всички наши дейности</p>
+                <p class="text-slate-300 lang-en">Honest work, reliability and transparency in all our activities</p>
+                <p class="text-slate-300 lang-gr">Ειλικρινές έργο, αξιοπιστία και διαφάνεια</p>
+            </div>
+
+            <div class="glass p-8 rounded-2xl border border-red-600/30 hover:border-red-600 transition card-hover">
+                <h3 class="text-3xl font-black mb-4 text-red-600">⭐ <span class="lang-bg">Качество</span><span class="lang-en">Quality</span><span class="lang-gr">Ποιότητα</span></h3>
+                <p class="text-slate-300 lang-bg">Висок стандарт на всички наши продукти и услуги</p>
+                <p class="text-slate-300 lang-en">High standard for all our products and services</p>
+                <p class="text-slate-300 lang-gr">Υψηλό πρότυπο σε όλα τα προϊόντα μας</p>
+            </div>
+
+            <div class="glass p-8 rounded-2xl border border-red-600/30 hover:border-red-600 transition card-hover">
+                <h3 class="text-3xl font-black mb-4 text-red-600">🔒 <span class="lang-bg">Сигурност</span><span class="lang-en">Safety</span><span class="lang-gr">Ασφάλεια</span></h3>
+                <p class="text-slate-300 lang-bg">Безопасна работа и доставка, всички сертификати</p>
+                <p class="text-slate-300 lang-en">Safe work and delivery, all certificates provided</p>
+                <p class="text-slate-300 lang-gr">Ασφαλής εργασία και παράδοση</p>
+            </div>
+        </div>
+
+        <!-- Work Regions -->
+        <div class="glass p-8 md:p-12 rounded-2xl border border-red-600/30 text-center">
+            <h3 class="text-2xl font-black mb-4 text-red-600 lang-bg">🗺️ Работим в регионите:</h3>
+            <h3 class="text-2xl font-black mb-4 text-red-600 lang-en">🗺️ We work in regions:</h3>
+            <h3 class="text-2xl font-black mb-4 text-red-600 lang-gr">🗺️ Εργαζόμαστε στις περιοχές:</h3>
+            <p class="text-lg font-bold text-slate-200">Гоце Делчев • Банско • Благоевград • София</p>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section id="products" class="py-20 md:py-32 px-4 md:px-6 bg-black">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl md:text-6xl font-black mb-4">
+                <span class="lang-bg">НАШИ ПРОДУКТИ</span>
+                <span class="lang-en">OUR PRODUCTS</span>
+                <span class="lang-gr">ΤΑ ΠΡΟΪΟΝΤΑ ΜΑΣ</span>
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+            <div class="glass p-6 md:p-8 rounded-2xl card-hover border border-red-600/30">
+                <h3 class="text-2xl font-black mb-3 text-red-600">🔗 <span class="lang-bg">АРМАТУРА</span><span class="lang-en">REINFORCEMENT</span><span class="lang-gr">ΟΠΛΙΣΜΟΣ</span></h3>
+                <p class="text-slate-300 lang-bg">Висококачествено армиращо желязо - различни диаметри, сертифицирана</p>
+                <p class="text-slate-300 lang-en">High-quality reinforcement steel - various diameters, certified</p>
+                <p class="text-slate-300 lang-gr">Χάλυβα ενίσχυσης - διάφορες διάμετροι</p>
+            </div>
+
+            <div class="glass p-6 md:p-8 rounded-2xl card-hover border border-red-600/30">
+                <h3 class="text-2xl font-black mb-3 text-red-600">📐 <span class="lang-bg">ПРОФИЛИ</span><span class="lang-en">PROFILES</span><span class="lang-gr">ΠΡΟΦΙΛ</span></h3>
+                <p class="text-slate-300 lang-bg">Метални профили различни форми - правоъгълни, кръгли, специални</p>
+                <p class="text-slate-300 lang-en">Metal profiles various shapes - rectangular, round, special</p>
+                <p class="text-slate-300 lang-gr">Μεταλλικά προφίλ - διάφορα σχήματα</p>
+            </div>
+
+            <div class="glass p-6 md:p-8 rounded-2xl card-hover border border-red-600/30">
+                <h3 class="text-2xl font-black mb-3 text-red-600">🔷 <span class="lang-bg">ТРЪБИ</span><span class="lang-en">PIPES</span><span class="lang-gr">ΣΩΛΗΝΕΣ</span></h3>
+                <p class="text-slate-300 lang-bg">Метални тръби за конструкции - безшевни, конструкционни</p>
+                <p class="text-slate-300 lang-en">Metal pipes for construction - seamless, structural</p>
+                <p class="text-slate-300 lang-gr">Μεταλλικές σωλήνες για κατασκευές</p>
+            </div>
+
+            <div class="glass p-6 md:p-8 rounded-2xl card-hover border border-red-600/30">
+                <h3 class="text-2xl font-black mb-3 text-red-600">📋 <span class="lang-bg">ЛАМАРИНА/ЛИСТ</span><span class="lang-en">SHEETS</span><span class="lang-gr">ΦΥΛΛΑ</span></h3>
+                <p class="text-slate-300 lang-bg">Метални листове различни дебелини - висока точност</p>
+                <p class="text-slate-300 lang-en">Metal sheets various thickness - high precision</p>
+                <p class="text-slate-300 lang-gr">Μεταλλικά φύλλα - διάφορα πάχη</p>
+            </div>
+
+            <div class="glass p-6 md:p-8 rounded-2xl card-hover border border-red-600/30">
+                <h3 class="text-2xl font-black mb-3 text-red-600">🕸️ <span class="lang-bg">МРЕЖИ</span><span class="lang-en">MESHES</span><span class="lang-gr">ΔΙΚΤΥΑ</span></h3>
+                <p class="text-slate-300 lang-bg">Арматурни мрежи и оградни мрежи - различни размери</p>
+                <p class="text-slate-300 lang-en">Reinforcement meshes and fence meshes</p>
+                <p class="text-slate-300 lang-gr">Δίκτυα οπλισμού και περίφραξης</p>
+            </div>
+
+            <div class="glass p-6 md:p-8 rounded-2xl card-hover border border-red-600/30">
+                <h3 class="text-2xl font-black mb-3 text-red-600">⚙️ <span class="lang-bg">ОБРАБОТКА</span><span class="lang-en">PROCESSING</span><span class="lang-gr">ΕΠΕΞΕΡΓΑΣΙΑ</span></h3>
+                <p class="text-slate-300 lang-bg">Рязане, огъване и подготовка по спецификация</p>
+                <p class="text-slate-300 lang-en">Cutting, bending and processing to specifications</p>
+                <p class="text-slate-300 lang-gr">Κοπή, κάμψη και προετοιμασία</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section id="services" class="py-20 md:py-32 px-4 md:px-6 bg-gradient-to-b from-black via-red-950/20 to-black">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl md:text-6xl font-black">
+                <span class="lang-bg">НАШИ УСЛУГИ</span>
+                <span class="lang-en">OUR SERVICES</span>
+                <span class="lang-gr">ΟΙ ΥΠΗΡΕΣΙΕΣ ΜΑΣ</span>
+            </h2>
+        </div>
+
+        <div class="space-y-8">
+            <!-- Service 1 -->
+            <div class="glass p-6 md:p-10 rounded-2xl border border-red-600/30 hover:border-red-600 transition card-hover">
+                <h3 class="text-2xl md:text-3xl font-black mb-4 text-red-600">🔄 <span class="lang-bg">РЯЗАНЕ И ОГЪВАНЕ</span><span class="lang-en">CUTTING & BENDING</span><span class="lang-gr">ΚΟΠΗ & ΚΆΜΨΗ</span></h3>
+                <p class="text-slate-300 text-base md:text-lg leading-relaxed lang-bg">Извършваме професионално рязане и огъване на арматура, профили и тръби според Вашите точни спецификации и проектна документация. Работим с внимание към качеството, сроковете и коректното обслужване на нашите клиенти.</p>
+                <p class="text-slate-300 text-base md:text-lg leading-relaxed lang-en">We perform professional cutting and bending of reinforcement, profiles and pipes according to your exact specifications and project documentation. We work with attention to quality, deadlines and correct service.</p>
+                <p class="text-slate-300 text-base md:text-lg leading-relaxed lang-gr">Πραγματοποιούμε επαγγελματική κοπή και κάμψη σύμφωνα με τις ακριβείς προδιαγραφές.</p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="glass p-6 md:p-10 rounded-2xl border border-red-600/30 hover:border-red-600 transition card-hover">
+                <h3 class="text-2xl md:text-3xl font-black mb-4 text-red-600">🚚 <span class="lang-bg">БЪРЗА ДОСТАВКА</span><span class="lang-en">FAST DELIVERY</span><span class="lang-gr">ΓΡΗΓΟΡΗ ΠΑΡΑΔΟΣΗ</span></h3>
+                <div class="space-y-3 text-slate-300 text-base md:text-lg">
+                    <p class="lang-bg">• Безплатна доставка над определени количества</p>
+                    <p class="lang-bg">• При запитване, клиентът трябва да ни предостави нужната спецификация или килограми, за да му бъде оферирана конкретна цена</p>
+                    <p class="lang-bg">• При количества от около 20т изискваме поне 10 работни дни преди това да ни бъде изпратена заявка със спецификацията, като в повече от случите сме по-рано готови от предвидения срок</p>
+                    <p class="lang-bg">• Работим със строителни фирми, търговци на магазини и крайни клиенти</p>
+
+                    <p class="lang-en">• Free delivery for quantities above minimum</p>
+                    <p class="lang-en">• Upon inquiry, the customer should provide us with the necessary specifications to receive a price offer</p>
+                    <p class="lang-en">• For quantities around 20 tons, we require at least 10 working days with specifications sent in advance</p>
+                    <p class="lang-en">• We work with construction companies, shops and end customers</p>
+
+                    <p class="lang-gr">• Δωρεάν παράδοση για ποσότητες πάνω από το ελάχιστο</p>
+                    <p class="lang-gr">• Κατά την υποβολή ερώτησης, ο πελάτης πρέπει να μας παράσχει τις απαραίτητες προδιαγραφές</p>
+                    <p class="lang-gr">• Για ποσότητες περίπου 20 τόνων, απαιτούμε τουλάχιστον 10 εργάσιμες ημέρες</p>
+                    <p class="lang-gr">• Εργαζόμαστε με εταιρείες κατασκευών, καταστήματα και τελικούς πελάτες</p>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="glass p-6 md:p-10 rounded-2xl border border-red-600/30 hover:border-red-600 transition card-hover">
+                <h3 class="text-2xl md:text-3xl font-black mb-4 text-red-600">📄 <span class="lang-bg">СЕРТИФИКАТИ И ДОКУМЕНТИ</span><span class="lang-en">CERTIFICATES & DOCUMENTS</span><span class="lang-gr">ΠΙΣΤΟΠΟΙΗΤΙΚΑ</span></h3>
+                <p class="text-slate-300 text-base md:text-lg leading-relaxed lang-bg">Предоставяме сертификат и декларация за съответствие за всяка доставка (при желание на клиента), както и кантарна бележка с точното количество. Всички наши продукти са сертифицирани и отговарят на всички необходими стандарти.</p>
+                <p class="text-slate-300 text-base md:text-lg leading-relaxed lang-en">We provide a certificate and declaration of conformity for each delivery (upon customer request), as well as a weight note with the exact quantity. All our products are certified and meet all necessary standards.</p>
+                <p class="text-slate-300 text-base md:text-lg leading-relaxed lang-gr">Παρέχουμε πιστοποιητικό και δήλωση συμμόρφωσης για κάθε παράδοση, καθώς και σημείωση βάρους.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="py-20 md:py-32 px-4 md:px-6 bg-black">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl md:text-6xl font-black">
+                <span class="lang-bg">СВЪРЖЕТЕ СЕ С НАС</span>
+                <span class="lang-en">GET IN TOUCH</span>
+                <span class="lang-gr">ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΜΑΣ</span>
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Contact Info -->
+            <div class="space-y-6">
+                <!-- Phone -->
+                <a href="tel:+359896909011" class="glass p-6 md:p-8 rounded-2xl border border-red-600/30 hover:border-red-600 transition card-hover block">
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-bg">☎️ ПОЗВЪНЕТЕ</h3>
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-en">☎️ CALL US</h3>
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-gr">☎️ ΚΑΛΕΣΤΕ ΜΑΣ</h3>
+                    <p class="text-2xl text-red-500 font-black">+359 896 909011</p>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:office@classmetal.bg" class="glass p-6 md:p-8 rounded-2xl border border-red-600/30 hover:border-red-600 transition card-hover block">
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-bg">📧 ИМЕЙЛ</h3>
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-en">📧 EMAIL</h3>
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-gr">📧 ΗΛΕΚΤΡΟΝΙΚΟ ΤΑΧΥΔΡΟΜΕΙΟ</h3>
+                    <p class="text-red-500 font-bold break-all">office@classmetal.bg</p>
+                </a>
+
+                <!-- Address -->
+                <button onclick="openMaps()" class="glass p-6 md:p-8 rounded-2xl border border-red-600/30 hover:border-red-600 transition card-hover w-full text-left">
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-bg">📍 АДРЕС</h3>
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-en">📍 ADDRESS</h3>
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-gr">📍 ΔΙΕΥΘΥΝΣΗ</h3>
+                    <p class="text-slate-300">гр. Хаджидимово</p>
+                    <p class="text-slate-300">ул. Младост 33</p>
+                    <p class="text-red-500 font-bold">Пощенски код: 2933</p>
+                </button>
+
+                <!-- Manager -->
+                <div class="glass p-6 md:p-8 rounded-2xl border border-red-600/30">
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-bg">👤 УПРАВИТЕЛ</h3>
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-en">👤 MANAGER</h3>
+                    <h3 class="text-2xl font-black mb-3 text-red-600 lang-gr">👤 ΔΙΑΧΕΙΡΙΣΤΗΣ</h3>
+                    <p class="text-slate-300 font-bold">Благой Иванов Пасков</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="glass p-6 md:p-10 rounded-2xl border border-red-600/30">
+                <h3 class="text-2xl md:text-3xl font-black mb-8 text-white lang-bg">✉️ ИЗПРАТЕТЕ ЗАПИТВАНЕ</h3>
+                <h3 class="text-2xl md:text-3xl font-black mb-8 text-white lang-en">✉️ SEND INQUIRY</h3>
+                <h3 class="text-2xl md:text-3xl font-black mb-8 text-white lang-gr">✉️ ΣΤΕΙΛΤΕ ΕΡΕΥΝΑ</h3>
+                
+                <form id="contactForm" onsubmit="sendEmail(event)" class="space-y-4 md:space-y-6">
+                    <input type="text" placeholder="Вашето име / Your name / Το όνομά σας" required class="w-full glass px-4 md:px-6 py-3 md:py-4 rounded-lg border border-red-600/20 focus:border-red-600 outline-none transition text-white placeholder-slate-400 text-sm md:text-base">
+                    <input type="email" placeholder="Ваш имейл / Your email / Το email σας" required class="w-full glass px-4 md:px-6 py-3 md:py-4 rounded-lg border border-red-600/20 focus:border-red-600 outline-none transition text-white placeholder-slate-400 text-sm md:text-base">
+                    <textarea placeholder="Вашата заявка / Your inquiry / Η ερώτησή σας" required rows="5" class="w-full glass px-4 md:px-6 py-3 md:py-4 rounded-lg border border-red-600/20 focus:border-red-600 outline-none transition text-white placeholder-slate-400 text-sm md:text-base resize-none"></textarea>
+                    <button type="submit" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-black py-3 md:py-4 rounded-lg transition transform hover:scale-105 button-glow text-sm md:text-base">
+                        🚀 <span class="lang-bg">ИЗПРАТИ</span><span class="lang-en">SEND</span><span class="lang-gr">ΣΤΕΙΛΕ</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gradient-to-t from-black via-red-950/10 to-black border-t border-red-600/20 py-8 md:py-12 px-4 md:px-6 text-center text-slate-500 text-xs md:text-sm">
+    <p class="mb-2">© 2024 CLASS METAL LTD. Всички права запазени. | All rights reserved. | Όλα τα δικαιώματα διατηρούνται.</p>
+    <p>Хаджидимово, България | 📞 +359 896 909011 | 📧 office@classmetal.bg</p>
+</footer>
+
+<script>
+    function changeLang(lang) {
+        document.documentElement.lang = lang;
+        // Update button highlighting
+        const buttons = document.querySelectorAll('.flex.gap-2.bg-slate-900/50 button');
+        buttons.forEach((btn, idx) => {
+            btn.classList.remove('bg-red-600', 'text-white');
+            btn.classList.add('text-slate-400', 'hover:text-white');
+        });
+        const langIndex = ['bg', 'en', 'gr'].indexOf(lang);
+        if (buttons[langIndex]) {
+            buttons[langIndex].classList.remove('text-slate-400', 'hover:text-white');
+            buttons[langIndex].classList.add('bg-red-600', 'text-white');
+        }
+    }
+
+    function openMaps() {
+        window.open('https://www.google.com/maps/search/Hadzhidimovo+Youth+Street+33/@41.4568,23.3234,15z', '_blank');
+    }
+
+    function sendEmail(e) {
+        e.preventDefault();
+        alert('Благодаря за запитването! / Thank you for your inquiry! / Ευχαριστώ για την ερώτησή σας!');
+        document.getElementById('contactForm').reset();
+    }
+</script>
+
+</body>
+</html>
